@@ -1,10 +1,10 @@
-<h3>Search Results:</h3>
+<h1>Search Results:</h1>
 <ul>
   <% if @results == [] %>
     <li>No results found</li>
   <% else %>
     <% @results.each do |meetup| %>
-      <li><a href="/meetups<%= meetup.id %>"><%= meetup.name %></a></li>
+      <li><a href="/meetups/<%= meetup.id %>"><%= meetup.name %></a></li>
     <% end %>
   <% end %>
 </ul>

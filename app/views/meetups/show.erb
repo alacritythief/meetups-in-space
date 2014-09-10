@@ -2,4 +2,14 @@
 
 <p>Location: <br> <%= @meetup.location %></p>
 
+<% if signed_in? %>
+  <% if current_user.meetups.include?(@meetup) == false %>
+    <form action="/meetups/<%= @meetup.id %>/memberships" method="post">
+      <input type="submit" value="Join this Meetup">
+    </form>
+  <% else %>
+    <p><strong>[You have joined this meetup]</strong></p>
+  <% end %>
+<% end %>
+
 <p>Description: <br> <%= @meetup.description %></p>

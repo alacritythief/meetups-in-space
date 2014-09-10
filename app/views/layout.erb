@@ -26,17 +26,17 @@
   </div>
 </div>
 
-<% if flash.any? %>
+  <% if flash.any? %>
   <div class="flash">
-    <div class="container>
+    <div class="container">
       <%= flash[:notice] %>
     </div>
   </div>
-<% end %>
+  <% end %>
 
 <div class="container center">
   <%= yield %>
-  <p><a href="/">Search</a> | <a href="/meetups">Meetups List</a></p>
+  <p><a href="/">Search</a> | <a href="/meetups">Meetups List</a> | <a href="/meetups/new">Create a Meetup</a></p>
 </div>
 
 

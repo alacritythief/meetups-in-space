@@ -16,8 +16,8 @@ a:hover,a:active {
 
 .container {
   max-width: 1024px;
-  width: 80%;
   margin: 0 auto;
+  width: 80%;
 }
 
 .top-bar {

@@ -68,12 +68,42 @@ post '/search' do
   erb :search
 end
 
+get '/meetups/new' do
+  erb :'meetups/new'
+end
+
 get '/meetups/:id' do
   @meetup = Meetup.find(params[:id])
   erb :'meetups/show'
 end
 
-# Creating
-# meetup = Meetup.create(name: 'Pizza Meetup', description: 'Super fun pizza timez!', location: 'Boston, MA')
-# Meetup.all - all the meetups
+post '/meetups/new' do
+  authenticate!
 
+  name = params['name']
+  des = params['description']
+  loc = params['location']
+
+  @new_meetup = Meetup.new(name: name, description: des, location: loc)
+  if @new_meetup.name != "" && @new_meetup.description != "" && @new_meetup.location != ""
+    redirect "/meetups/#{@new_meetup.id}"
+  else
+    flash[:notice] = 'Please complete all fields!'
+    redirect '/meetups/new'
+  end
+end
+
+post '/meetups/:meetup_id/memberships' do
+  authenticate!
+
+  @meetup = Meetup.find(params[:meetup_id])
+  @membership = Membership.new(user_id: current_user.id, meetup_id: @meetup.id)
+
+  if @membership.save
+    flash[:notice] = "You successfully joined the meetup!"
+    redirect "/meetups/#{@meetup.id}"
+  else
+    flash[:notice] = "ERROR: Cannot Join Meetup"
+    redirect "/meetups/#{@meetup.id}"
+  end
+end
