@@ -54,8 +54,26 @@ get '/example_protected_page' do
   authenticate!
 end
 
+get '/meetups' do
+  @meetups = Meetup.all.order(:name)
+  erb :'meetups/index'
+end
+
+post '/search' do
+  name = params['name']
+  des = params['description']
+  loc = params['location']
+
+  @results = Meetup.all.where("name like ? and description like? and location like?", "%#{name}%", "%#{des}%", "%#{loc}%").order(:name)
+  erb :search
+end
+
 get '/meetups/:id' do
   @meetup = Meetup.find(params[:id])
-
   erb :'meetups/show'
 end
+
+# Creating
+# meetup = Meetup.create(name: 'Pizza Meetup', description: 'Super fun pizza timez!', location: 'Boston, MA')
+# Meetup.all - all the meetups
+

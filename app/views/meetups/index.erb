@@ -1,0 +1,9 @@
+
+
+<h3>Current list of Meetups in Space:</h3>
+
+<ul>
+  <% @meetups.each do |meetup| %>
+    <li><a href="/meetups/<%= meetup.id %>"><%= meetup.name %></a></li>
+  <% end %>
+</ul>

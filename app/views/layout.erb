@@ -11,7 +11,6 @@
 
 <div class="top-bar">
   <div class="container">
-    <a class="logo" href="/">Meetups in Space</a>
 
     <ul class="top-bar-section">
       <% if signed_in? %>
@@ -21,20 +20,26 @@
         <li><a href="/auth/github">Sign in</a></li>
       <% end %>
     </ul>
+
+    <a class="logo" href="/">Meetups in Space</a>
+
   </div>
 </div>
 
 <% if flash.any? %>
   <div class="flash">
-    <div class="container">
+    <div class="container>
       <%= flash[:notice] %>
     </div>
   </div>
 <% end %>
 
-<div class="container">
+<div class="container center">
   <%= yield %>
+  <p><a href="/">Search</a> | <a href="/meetups">Meetups List</a></p>
 </div>
+
+
 
 </body>
 </html>

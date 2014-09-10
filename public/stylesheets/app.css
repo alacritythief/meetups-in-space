@@ -10,8 +10,13 @@ a:visited {
   text-decoration: none;
 }
 
+a:hover,a:active {
+  color: #00ffff;
+}
+
 .container {
   max-width: 1024px;
+  width: 80%;
   margin: 0 auto;
 }
 
@@ -22,9 +27,11 @@ a:visited {
 .top-bar-section {
   display: inline-block;
   float: right;
+  padding-right: 30px;
 }
 
 .top-bar-section li {
+  list-style: none;
   display: inline-block;
   margin-left: 1em;
 }
@@ -37,4 +44,19 @@ a:visited {
 .flash {
   padding: 1em;
   background-color: #3B9089;
+}
+
+input {
+  line-height: 1.5em;
+  color: #000;
+}
+
+.center {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.center li {
+  display: inherit;
+  padding-right: 2em;
 }
