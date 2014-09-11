@@ -86,6 +86,7 @@ post '/meetups/new' do
 
   @new_meetup = Meetup.new(name: name, description: des, location: loc)
   if @new_meetup.name != "" && @new_meetup.description != "" && @new_meetup.location != ""
+    @new_meetup.save
     redirect "/meetups/#{@new_meetup.id}"
   else
     flash[:notice] = 'Please complete all fields!'
